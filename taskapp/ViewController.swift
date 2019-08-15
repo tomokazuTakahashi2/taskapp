@@ -140,19 +140,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     //MARK: SearchBarAction
-    // 検索ボタンが押された時に呼ばれる
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchBar.endEditing(true)
-        //検索結果配列を空にする。
-        searchResults.removeAll()
-        
-        let predicate = NSPredicate(format: "category = %@", searchBar.text!)
-        taskArray = try! Realm().objects(Task.self).filter(predicate).sorted(byKeyPath: "date", ascending: false)
-        
-        //テーブルを再読み込みする。
-        tableView.reloadData()
-    }
+    
     // サーチバーに入力された文字がカテゴリ名に含まれるタスクを表示する
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
